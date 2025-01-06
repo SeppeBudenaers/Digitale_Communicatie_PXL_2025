@@ -12,12 +12,11 @@ If the target operates on a higher or lower frequency, ensure the SDR can handle
 ### SDR software ([SDR#](https://airspy.com/download/))
 For software, I opted for **SDR# (SDRSharp)**
 
+## capturing
+
 ## Decoding 
 
-### capturing
-
-### analog to digital decode 
-#### button one 
+### button one 
 
 ![](.\MISC\BTN_1_Decode.png)
 
@@ -30,7 +29,7 @@ It looks like there are two symbols: `1000` and `1110`. When converting `1000` i
 ```
 ABAABBBBAAAABBABBAAAAAAAAAA
 ```
-Splitting it further into bytes gives:
+Splitting it further into bytes gives (two to 5 symbols to short):
 ```
 ABAABBBB AAAABBAB BAAAAAAA AAA
 ```
@@ -38,13 +37,23 @@ If you replace it with `00` = A, `01` = B, `10` = C, and `11` = D, you get:
 ``` 
 CADCCACADCDCDCDCCACACACADCDCCADCDCCACACACACACACACACACA
 ```
-Splitting it further into bytes results in:
+Splitting it further into bytes results in (two to 2 symbols to short):
 ``` 
 CADCCACA DCDCDCDC CACACACA DCDCCADC DCCACACA CACACACA CACACA
 ```
+
+
 This seems to be more promising. However, there may have been a few `00` pairs discarded due to lack of context. It's also unclear where zeros were missed at the front or back of the sequence.
 
-### digital to data decode
+### button two 
+![](.\MISC\BTN_2_Decode.png)
+
+```
+100011101000100011101110111011101000100010001000111010001000111010001110111010001000100010001000100010001000
+```
+### button three
+
+### button four
 
 ## Result 
 
