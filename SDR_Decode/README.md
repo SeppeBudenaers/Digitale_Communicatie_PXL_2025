@@ -17,7 +17,36 @@ For software, I opted for **SDR# (SDRSharp)**
 ### capturing
 
 ### analog to digital decode 
+#### button one 
+
+![](.\MISC\BTN_1_Decode.png)
+
+```
+100011101000100011101110111011101000100010001000111011101000111011101000100010001000100010001000100010001000
+```
+
+It looks like there are two symbols: `1000` and `1110`. When converting `1000` into `A` and `1110` into `B`, it transforms into this:
+
+```
+ABAABBBBAAAABBABBAAAAAAAAAA
+```
+Splitting it further into bytes gives:
+```
+ABAABBBB AAAABBAB BAAAAAAA AAA
+```
+If you replace it with `00` = A, `01` = B, `10` = C, and `11` = D, you get:
+``` 
+CADCCACADCDCDCDCCACACACADCDCCADCDCCACACACACACACACACACA
+```
+Splitting it further into bytes results in:
+``` 
+CADCCACA DCDCDCDC CACACACA DCDCCADC DCCACACA CACACACA CACACA
+```
+This seems to be more promising. However, there may have been a few `00` pairs discarded due to lack of context. It's also unclear where zeros were missed at the front or back of the sequence.
 
 ### digital to data decode
 
 ## Result 
+
+
+
