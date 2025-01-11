@@ -122,6 +122,46 @@ In multi-level encoding, we use the notation `xbXQ` or `B T Q`, where:
 
   ![image-20250111151855372](Images/README/image-20250111151855372.png)
 
+### 4D-PAM5  
+
+4D-PAM5 is a multi-level encoding scheme that uses five voltage levels and represents data in four dimensions, improving transmission speed while maintaining a balance between signal strength and bandwidth efficiency.  
+
+![4D-PAM5](Images/README/image-20250111154656543.png)  
+
+### MLT-3  
+
+MLT-3 (Multi-Level Transmit-3) encoding reduces the frequency of the signal by alternating among three voltage levels. This technique helps minimize bandwidth usage and avoids long runs of the same signal, improving signal integrity.  
+
+![MLT-3](Images/README/image-20250111154648586.png)
+
+### Line Coding Summary 
+
+| Category         | scheme     | BW average | characteristics                                              |
+| ---------------- | ---------- | ---------- | ------------------------------------------------------------ |
+| Unipolar         | NRZ        | 2/N        | Costly in power consumption                                  |
+| Polar            | NRZ-L      | 2/N        | less power consumption                                       |
+| Polar            | NRZ-I      | 2/N        | self-sync for long 1’s and less baseline wandering than NRZ-L |
+| Polar            | RZ         | N          | self-sync because of mid-transition and no DC-components     |
+| Polar            | Manchester | N          | self-sync because of mid-transition and no DC-components     |
+| Bipolar          | AMI        | 2/N        | self-sync for long 1’s and no DC-components                  |
+| Multi level      | XbXQ       | N/4        | No self-synch for long same double bits and less DC-components. Possible to detect errors by redundancy |
+| Multi level      | 8B6T       | 3N/4       | Self-synchronization and no DC-components. Possible to detect errors by redundancy |
+| Multi level      | 4D-PAM5    | N/8        | Self-synchronization and no DC-components. Possible to detect errors by redundancy |
+| Multi transition | MLT-3      | N/3        | More complex with self- synchronization for long 1’s and no DC-components. Possible to detect errors by redundancy |
+
+## Block Coding
+to lazy to add
+
+## Scrambling
+I don't understand 
+
+## Transmission Modes  
+
+- **Parallel**: Multiple bits are transmitted simultaneously over multiple channels or wires, typically used for short-distance communication, such as within a computer or between a computer and a peripheral.  
+- **Asynchronous**: In this mode, a start bit (0) is sent at the beginning and one or more stop bits (1s) at the end of each byte, with possible gaps between bytes.  
+- **Synchronous**: Bits are transmitted continuously without start or stop bits or gaps. The receiver is responsible for grouping the bits correctly.  
+- **Isochronous**: Data is transmitted at consistent intervals, ensuring predictable timing for real-time applications (e.g., audio or video) that require continuous, time-sensitive data streams.  
+
 
 
 # Analog Transmission
