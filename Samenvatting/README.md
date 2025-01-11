@@ -1,3 +1,24 @@
+## Digital signals
+
+Digital signals are being represented by multiple analog sine waves
+
+![image-20250111140759193](Images/README/image-20250111140759193.png)
+
+### Bandwith of a dedicated medium 
+
+the Bandwidth of a medium acts like a band-pass filter letting on certain frequencies through. this means that our perfect digital signal that consist of infitante sine waves is now only letting throught the sine wave that are located in the bandwidth/bandpass-filter. 
+
+![image-20250111140734380](Images/README/image-20250111140734380.png)
+
+###  worst case scenario 
+
+in the worst case scenario your medium only lets you send one sine wave without any harmonics. this can be described as: 
+```math
+\text{Frequency} = \text{Data Rate} / 2
+```
+
+![image-20250111140659984](Images/README/image-20250111140659984.png)
+
 ## Transmission impairment
 
 ### Attenuation (Loss of signal)
@@ -39,3 +60,10 @@ C = \text{Bandwidth} * \log_2(1 + \text{SNR})
 - Transmission Delay = `Message size/bandwidth bps`
 
 - Latency = `Propagation delay + Transmission delay + Queueing time + Processing time`
+
+# Megan fox netwerk
+
+# hamming code
+
+
+
