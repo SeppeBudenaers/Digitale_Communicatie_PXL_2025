@@ -74,4 +74,4 @@ When using the first method for additional button presses, a pattern becomes cle
 ### Analog to digital
 Amplitude shift keying (ASK)
 ### Digitial to binary
-1B1Q
+1B4B

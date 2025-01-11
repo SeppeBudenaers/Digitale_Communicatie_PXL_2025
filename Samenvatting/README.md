@@ -1,3 +1,5 @@
+# Data and Signals
+
 ## Digital signals
 
 Digital signals are being represented by multiple analog sine waves
@@ -30,10 +32,10 @@ Distortion occurs in `composite` signals.
 Each frequency component has its own propagation speed  -> don't arrive at the same time so some parts of the signal have a phase shift.
 
 ### Noise
-- thermal = `electrons make noise by moving more heat more moving`
-- Induced = `From spools (induction) that are active in the system`
-- Crosstalk  = `From signals through wires` 
-- Impulse  = `Voltage spikes in powerplanes (Lightning, power lines)`
+- **thermal** : `electrons make noise by moving more heat more moving`
+- **Induced** :`From spools (induction) that are active in the system`
+- **Crosstalk** : `From signals through wires` 
+- **Impulse** : `Voltage spikes in powerplanes (Lightning, power lines)`
 
 ## Data Rate
 
@@ -53,13 +55,85 @@ C = \text{Bandwidth} * \log_2(1 + \text{SNR})
 
 ## Performance
 
-- Bandwidth = `(Frames per minute * frame size)/60`
+- **Bandwidth** : `(Frames per minute * frame size)/60`
 
-- Propagation Delay = `Distance/Propagation speed`
+- **Propagation Delay** : `Distance/Propagation speed`
 
-- Transmission Delay = `Message size/bandwidth bps`
+- **Transmission Delay **: `Message size/bandwidth bps`
 
-- Latency = `Propagation delay + Transmission delay + Queueing time + Processing time`
+- **Latency**: `Propagation delay + Transmission delay + Queueing time + Processing time`
+
+# Digital Transmission
+
+## Digital to Digital Conversion
+
+We can represent digital data by using digital signals. The conversion involves three techniques: `line coding`, `block coding`, and `scrambling`. While `line coding` is always needed the others aren't needed but can be applied
+
+## Line Coding  
+
+Line encoding addresses several key problems:  
+- **Baseline wandering**: A voltage offset in the baseline caused by long runs of 0s or 1s.  
+- **DC components**: Most mediums are band-pass, so low frequencies (long runs of 0s or 1s) are filtered out.  
+- **Self-synchronization**: Misalignment of sender and receiver clocks, leading to errors.  
+- **Error detection**: Errors that occur during transmission due to line impairments.  
+- **Noise and interference**: Some encoding techniques make the signal more resistant to noise and interference.  
+- **Complexity**: More robust and resilient encoding methods are often more complex to implement, impacting baud rate or required bandwidth.  
+
+There are many different line encoding methods, each addressing these problems in unique ways.  
+### Unipolar NRZ-L  
+This is the encoding we are most familiar with, as it is used in SPI, UART, and I2C.  
+
+![Unipolar NRZ-L](Images/README/image.png)  
+
+### Polar NRZ-L & NRZ-I  
+NRZ stands for Non-Return-to-Zero.  
+- **NRZ-L**: The signal level changes based on the bit value (e.g., 0 = low, 1 = high).  
+- **NRZ-I**: The signal inverts when the bit value is 1 and remains unchanged for 0.  
+
+![Polar NRZ-L & NRZ-I](Images/README/image-20250111150144929.png)  
+
+### Polar RZ  
+
+RZ stands for Return to Zero
+
+This encoding method ensures that the signal returns to zero between each bit.  
+
+![Polar RZ](Images/README/image-20250111150530785.png)  
+
+### Manchester & Differential Manchester  
+
+Manchester encoding ensures synchronization by encoding data bits based on transitions:  
+- **Manchester**: A 0 is represented by a high-to-low transition, and a 1 by a low-to-high transition in the middle of the bit period.  
+- **Differential Manchester**: Similar to NRZ-I, it changes transitions only when the data bit is 1. A transition always occurs at the start of the bit period for clock synchronization.
+
+![Manchester & Differential Manchester](Images/README/image-20250111150837859.png)  
+
+### AMI & pseudoternary 
+- **AMI (Alternate Mark Inversion)**: A 0 is represented by no signal, while 1s alternate between positive and negative voltages.
+- **Pseudoternary**: Similar to AMI, but 0s are represented by alternating between positive and negative voltages, while 1s are represented by no signal.
+![image-20250111151152710](Images/README/image-20250111151152710.png)
+
+### Multi-level Encoding  
+
+In multi-level encoding, we use the notation `xbXQ` or `B T Q`, where:  
+- **Xb** (or **B**) refers to the number of bits encoded per symbol.  
+
+- **XQ** (or **T/Q**) refers to the number of levels used to represent those bits.  
+
+  ![image-20250111151855372](Images/README/image-20250111151855372.png)
+
+
+
+# Analog Transmission
+
+# Bandwidth Utilization 
+
+# Error Detection and Corretion
+
+# Transmission Media
+
+
+
 
 # Megan fox netwerk
 
