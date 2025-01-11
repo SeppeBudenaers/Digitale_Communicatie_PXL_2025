@@ -70,3 +70,8 @@ When using the first method for additional button presses, a pattern becomes cle
 > Note: When holding the button, the signal repeats, but instead of ABA, it starts with AABA. This appears to act as a flag to indicate that the signal has already been received, preventing repeated activation.
 
 ## Result 
+
+### Analog to digital
+Amplitude shift keying (ASK)
+### Digitial to binary
+1B1Q
