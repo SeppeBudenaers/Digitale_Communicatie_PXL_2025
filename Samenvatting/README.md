@@ -260,6 +260,40 @@ CDM allows multiple signals to share the same frequency spectrum by assigning a 
 
 # Transmission Media
 
+## Guided Media
+
+## Unguided Media
+
+## Propagation Types  
+
+Signal propagation methods depend on the frequency range and environmental factors. Below are the key types:  
+
+### Ground Propagation ( \( x < 2 \, \text{MHz} \) )  
+
+In ground propagation, signals travel along the curvature of the Earth. Signal loss occurs due to scattering around obstacles.  
+
+![Ground Propagation](Images/README/image-20250112150801323.png)  
+
+### Sky Propagation ( \( 2 \, \text{MHz} < x < 30 \, \text{MHz} \) )  
+
+Sky propagation involves signals traveling through the air and reflecting off the ionosphere's surface. This enables long-distance communication by "bouncing" signals between the Earth and the ionosphere.  
+
+![Sky Propagation](Images/README/image-20250112150907569.png)  
+
+### Line-of-Sight Propagation ( \( x > 30 \, \text{MHz} \) )  
+
+In line-of-sight propagation, signals travel directly through the air, with the transmitting antenna aimed at the receiving antenna in clear line-of-sight.  
+
+![Line-of-Sight Propagation](Images/README/image-20250112150926102.png)  
+
+The Fresnel Zone defines the area around the line of sight where signal energy is concentrated.  
+- **Partially Obscured Fresnel Zone**: Leads to reduced signal quality.  
+- **Fully Obscured Fresnel Zone**: Results in no signal reception.  
+
+## Signal Propagation
+
+
+
 # Megan fox netwerk
 
 # hamming code
