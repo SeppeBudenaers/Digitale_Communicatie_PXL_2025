@@ -229,7 +229,6 @@ FDM divides the available bandwidth into multiple frequency bands, with each ban
 ### Wavelength Division Multiplexing (WDM)  
 
 WDM is similar to FDM but is used specifically in optical fiber communication. It combines multiple light wavelengths (colors) into a single fiber, with each wavelength carrying separate data streams.  
-
 ![Wavelength Division Multiplexing](Images/README/image-20250112110659923.png)  
 
 ### Time Division Multiplexing (TDM)  
@@ -264,23 +263,19 @@ CDM allows multiple signals to share the same frequency spectrum by assigning a 
 
 ## Unguided Media
 
-## Propagation Types  
-
-Signal propagation methods depend on the frequency range and environmental factors. Below are the key types:  
-
-### Ground Propagation ( \( x < 2 \, \text{MHz} \) )  
+### Ground Propagation (  x < 2 MHz )  
 
 In ground propagation, signals travel along the curvature of the Earth. Signal loss occurs due to scattering around obstacles.  
 
 ![Ground Propagation](Images/README/image-20250112150801323.png)  
 
-### Sky Propagation ( \( 2 \, \text{MHz} < x < 30 \, \text{MHz} \) )  
+### Sky Propagation ( 2 MHz < x < 30 MHz )  
 
 Sky propagation involves signals traveling through the air and reflecting off the ionosphere's surface. This enables long-distance communication by "bouncing" signals between the Earth and the ionosphere.  
 
 ![Sky Propagation](Images/README/image-20250112150907569.png)  
 
-### Line-of-Sight Propagation ( \( x > 30 \, \text{MHz} \) )  
+### Line-of-Sight Propagation ( 30 MHz < x )  
 
 In line-of-sight propagation, signals travel directly through the air, with the transmitting antenna aimed at the receiving antenna in clear line-of-sight.  
 
