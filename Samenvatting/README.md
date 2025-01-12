@@ -149,31 +149,116 @@ MLT-3 (Multi-Level Transmit-3) encoding reduces the frequency of the signal by a
 | Multi level      | 4D-PAM5    | N/8        | Self-synchronization and no DC-components. Possible to detect errors by redundancy |
 | Multi transition | MLT-3      | N/3        | More complex with self- synchronization for long 1’s and no DC-components. Possible to detect errors by redundancy |
 
-## Block Coding
-to lazy to add
+## Block Coding  
 
-## Scrambling
-I don't understand 
+Block coding takes smaller chunks of bits (blocks) and interprets them into larger blocks to introduce redundancy. This redundancy helps with error detection and correction.  
+
+![Block Coding](Images/README/image-20250112095601265.png)  
+
+## Scrambling  
+
+Scrambling modifies problematic bit patterns (e.g., those causing DC components, baseline wandering, or self-synchronization issues) into predetermined patterns that are easier to transmit and decode. For example, `0000` might be scrambled into `1010`. The receiver uses the same pattern to unscramble the data during decoding.  
+
 
 ## Transmission Modes  
 
 - **Parallel**: Multiple bits are transmitted simultaneously over multiple channels or wires, typically used for short-distance communication, such as within a computer or between a computer and a peripheral.  
 - **Asynchronous**: In this mode, a start bit (0) is sent at the beginning and one or more stop bits (1s) at the end of each byte, with possible gaps between bytes.  
 - **Synchronous**: Bits are transmitted continuously without start or stop bits or gaps. The receiver is responsible for grouping the bits correctly.  
-- **Isochronous**: Data is transmitted at consistent intervals, ensuring predictable timing for real-time applications (e.g., audio or video) that require continuous, time-sensitive data streams.  
-
-
+- **Isochronous**: Data is transmitted at consistent intervals, ensuring predictable timing for real-time applications (e.g., audio or video) that require continuous, time-sensitive data streams.
 
 # Analog Transmission
 
+## Digital-to-Analog Conversion  
+
+Digital-to-analog conversion involves modifying one of the characteristics of an analog signal based on digital data. A carrier signal (frequency \( f_c \)) serves as the medium to transport digital information in an analog waveform.  
+
+### Amplitude Shift Keying (ASK)  
+
+ASK alters the amplitude of a carrier signal to represent digital data. Different amplitude levels correspond to binary 0s and 1s.  
+
+![Amplitude Shift Keying](Images/README/image-20250112101113093.png)  
+
+### Frequency Shift Keying (FSK)  
+
+FSK changes the frequency of a carrier signal based on the digital data stream:  
+- A "1" is represented by \( f_1 = f_c + \Delta f \).  
+- A "0" is represented by \( f_2 = f_c - \Delta f \).  
+
+![Frequency Shift Keying](Images/README/image-20250112101417592.png)  
+
+### Phase Shift Keying (PSK)  
+
+PSK modifies the phase of the carrier signal to represent digital data. It is more reliable than ASK, as it is less affected by noise, which primarily alters signal amplitude.  
+
+![Phase Shift Keying](Images/README/image-20250112103825903.png)  
+
+### Quadrature Phase Shift Keying (QPSK)  
+
+QPSK enhances PSK by encoding two bits per symbol. The bit stream is split into pairs, each modulating a carrier frequency. One carrier is phase-shifted by 90° (in quadrature) relative to the other, enabling higher data rates while maintaining robustness.  
+
+![Quadrature Phase Shift Keying](Images/README/image-20250112104416362.png) 
+
+### Concept of a Constellation Diagram  
+
+A constellation diagram is used to visualize digital modulation schemes.  
+- The **X-axis** represents the in-phase carrier component.  
+- The **Y-axis** represents the quadrature carrier component.  
+Each point on the diagram corresponds to a specific symbol in the modulation scheme.  
+
+![Constellation Diagram](Images/README/image-20250112105010388.png)  
+
+## Analog-to-Analog Conversion  
+
+Analog-to-analog conversion involves modifying a continuous analog signal to carry information. It uses similar concepts as digital-to-analog conversion but applies them to continuous signals.  
+
+- **Amplitude Modulation (AM)**: The amplitude of the carrier wave is varied in proportion to the information signal.  
+- **Frequency Modulation (FM)**: The frequency of the carrier wave is varied based on the information signal.  
+- **Phase Modulation (PM)**: The phase of the carrier wave is altered to convey the information signal.  
+
 # Bandwidth Utilization 
+
+## Multiplexing
+
+### Frequency Division Multiplexing (FDM)  
+
+FDM divides the available bandwidth into multiple frequency bands, with each band assigned to a different signal. This allows simultaneous transmission without interference.  
+
+![Frequency Division Multiplexing](Images/README/image-20250112110454288.png)  
+
+### Wavelength Division Multiplexing (WDM)  
+
+WDM is similar to FDM but is used specifically in optical fiber communication. It combines multiple light wavelengths (colors) into a single fiber, with each wavelength carrying separate data streams.  
+
+![Wavelength Division Multiplexing](Images/README/image-20250112110659923.png)  
+
+### Time Division Multiplexing (TDM)  
+
+TDM divides the available bandwidth into time slots, with each slot assigned to a different signal. Signals are transmitted one after another in a repeating cycle.  
+
+![Time Division Multiplexing](Images/README/image-20250112110732106.png)  
+
+### Hybrid TDM/FDM  
+
+Hybrid TDM/FDM combines the principles of both techniques. FDM is used to divide the bandwidth into frequency bands, and TDM is applied within each band to share time slots among multiple signals.  
+
+![Hybrid TDM/FDM](Images/README/image-20250112112335458.png)  
+
+### Code Division Multiplexing (CDM)  
+
+CDM allows multiple signals to share the same frequency spectrum by assigning a unique code to each signal. These codes ensure that signals can be separated and decoded correctly at the receiver.  
+
+![Code Division Multiplexing](Images/README/image-20250112112618086.png)  
+
+## Spread Spectrum
+
+### Direct Sequence Spread Spectrum (DSSS)
+
+### Frequency hopping spread spectrum (FHSS)
 
 # Error Detection and Corretion
 
 # Transmission Media
-
-
-
 
 # Megan fox netwerk
 
