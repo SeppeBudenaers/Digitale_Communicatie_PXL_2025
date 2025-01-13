@@ -287,11 +287,6 @@ The Fresnel Zone defines the area around the line of sight where signal energy i
 
 ## Signal Propagation
 
-
-
 # Megan fox netwerk
 
 # hamming code
-
-
-
