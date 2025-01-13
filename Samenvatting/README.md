@@ -257,9 +257,52 @@ CDM allows multiple signals to share the same frequency spectrum by assigning a 
 
 # Error Detection and Corretion
 
+## Block coding
+### Codewords  
+
+Codewords are carefully chosen so that each is distinct and separated by a minimum distance. If a bit flip occurs, the mesage will not match any valid codeword, allowing the receiver to detect the error and discard the message.
+
+### Parity check
+
+Parity checks are a simple error detection mechanism:  
+- **One-Dimensional Parity Check**: A single parity bit is added to each block to ensure the total number of 1s is even (even parity) or odd (odd parity).  
+
+- **Two-Dimensional Parity Check**: Parity bits are added for both rows and columns of a data matrix, allowing for detection of more complex errors.  
+
+  ![image-20250113111035567](Images/README/image-20250113111035567.png)
+
+### Hamming code 
+
+The **Hamming Code** is a type of error-correcting code that can detect and correct single-bit errors. The **First-Order Hamming Code** is the simplest form of Hamming code, using redundant parity bits placed strategically within the data.
+
+![image-20250113111337762](Images/README/image-20250113111337762.png)
+
+## Cyclic Codes
+### Cyclic Redundancy Check (CRC)
+
+### Checksum
+
+A checksum is a method used to verify the integrity of transmitted data. To calculate it, you start by adding up all the data, such as `17, 02, 11, 07, 03`. Convert the values into binary and split them according to the size of your checksum. For example, with a 4-bit checksum, you would represent `40` as `0010 1000`. Then, add the two 4-bit chunks together, which gives `1010` (decimal 10), known as the wrapped checksum. Next, invert the bits, resulting in `0101` (decimal 5), and append this value to the original data, forming the message `17, 02, 11, 07, 03, 05`. On the receiving side, you repeat the same process. If the checksum results in `0` at the end of the calculation, the transmission is considered error-free.
+
+![image-20250113120638664](Images/README/image-20250113120638664.png)
+
+
+
 # Transmission Media
 
 ## Guided Media
+
+### Twisted Pairs Cable
+
+![image-20250113145815009](Images/README/image-20250113145815009.png)
+
+### Coaxial  Cable
+
+![image-20250113145754754](Images/README/image-20250113145754754.png)
+
+### Fiber Optics
+
+![image-20250113145539025](Images/README/image-20250113145539025.png)
 
 ## Unguided Media
 
@@ -285,8 +328,28 @@ The Fresnel Zone defines the area around the line of sight where signal energy i
 - **Partially Obscured Fresnel Zone**: Leads to reduced signal quality.  
 - **Fully Obscured Fresnel Zone**: Results in no signal reception.  
 
-## Signal Propagation
-
 # Megan fox netwerk
 
-# hamming code
+**PSTN (Public Switched Telephone Network)**: A traditional circuit-switched telephone network for voice communication.
+
+**GMSC (Gateway Mobile Switching Center)**: A central component in GSM networks responsible for routing calls to the correct MSC or forwarding to the external network.
+
+**HLR (Home Location Register)**: A database containing details of every subscriber registered in the GSM network, such as their service profile, location information, and activity status.
+
+**VLR (Visitor Location Register)**: A database that temporarily stores information about subscribers who are currently roaming in the area controlled by the MSC.
+
+**MSRN (Mobile Station Roaming Number)**: A temporary number assigned to a mobile subscriber for routing calls while they are roaming.
+
+**MSC (Mobile Switching Center)**: The primary service delivery node in the GSM network, responsible for routing voice calls, SMS, and other services.
+
+**BSS (Base Station Subsystem)**: A section of the GSM network responsible for communication between the mobile station (MS) and the MSC. It consists of BTS and BSC.
+
+**BTS (Base Transceiver Station)**: The equipment facilitating wireless communication between the network and mobile devices.
+
+**BSC (Base Station Controller)**: A component managing the BTSs in its area, handling tasks like handovers and radio resource management.
+
+**MS (Mobile Station)**: The subscriber's mobile device, consisting of the hardware and SIM card.
+
+**LA (Location Area)**: A region within a GSM network where mobile stations can move around without needing location updates sent to the HLR/VLR.
+
+![image](Images/README/image-1736774572719-1.png)
