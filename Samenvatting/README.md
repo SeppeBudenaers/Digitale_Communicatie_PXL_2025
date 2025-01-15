@@ -28,8 +28,7 @@ When a signal travels through a medium it loses energy overcoming the resistance
 Amplifiers are used to compensate for this loss of energy by amplifying the signal.
 
 ### Distortion (Change in signal shape)
-Distortion occurs in `composite` signals.
-Each frequency component has its own propagation speed  -> don't arrive at the same time so some parts of the signal have a phase shift.
+Distortion occurs in `composite` signals. Each frequency component has its own propagation speed  -> don't arrive at the same time so some parts of the signal have a phase shift.
 
 ### Noise
 - **thermal** : `electrons make noise by moving more heat more moving`
@@ -55,7 +54,7 @@ C = \text{Bandwidth} * \log_2(1 + \text{SNR})
 
 ## Performance
 
-- **Bandwidth** : `(Frames per minute * frame size)/60`
+- **Bandwidth** : `(Messages per minute * Message size)/60`
 
 - **Propagation Delay** : `Distance/Propagation speed`
 
@@ -75,7 +74,7 @@ Line encoding addresses several key problems:
 - **Baseline wandering**: A voltage offset in the baseline caused by long runs of 0s or 1s.  
 - **DC components**: Most mediums are band-pass, so low frequencies (long runs of 0s or 1s) are filtered out.  
 - **Self-synchronization**: Misalignment of sender and receiver clocks, leading to errors.  
-- **Error detection**: Errors that occur during transmission due to line impairments.  
+- **Error detection**: Preventing / detecting errors that occur during transmission due to line impairments.  
 - **Noise and interference**: Some encoding techniques make the signal more resistant to noise and interference.  
 - **Complexity**: More robust and resilient encoding methods are often more complex to implement, impacting baud rate or required bandwidth.  
 
@@ -255,7 +254,7 @@ CDM allows multiple signals to share the same frequency spectrum by assigning a 
 
 ### Frequency hopping spread spectrum (FHSS)
 
-# Error Detection and Corretion
+# Error Detection and Correction
 
 ## Block coding
 ### Codewords  
