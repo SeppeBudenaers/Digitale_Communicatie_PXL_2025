@@ -259,7 +259,7 @@ CDM allows multiple signals to share the same frequency spectrum by assigning a 
 ## Block coding
 ### Codewords  
 
-Codewords are carefully chosen so that each is distinct and separated by a minimum distance. If a bit flip occurs, the mesage will not match any valid codeword, allowing the receiver to detect the error and discard the message.
+Codewords are carefully chosen so that each is distinct and separated by a minimum distance. If a bit flip occurs, the message will not match any valid codeword, allowing the receiver to detect the error and discard the message.
 
 ### Parity check
 
@@ -270,7 +270,7 @@ Parity checks are a simple error detection mechanism:
 
   ![image-20250113111035567](Images/README/image-20250113111035567.png)
 
-### Hamming code 
+### Hamming Code 
 
 The **Hamming Code** is a type of error-correcting code that can detect and correct single-bit errors. The **First-Order Hamming Code** is the simplest form of Hamming code, using redundant parity bits placed strategically within the data.
 
