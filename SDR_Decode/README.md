@@ -1,6 +1,6 @@
 # SDR Decode 
 
-## what needed 
+## what is needed 
 
 ### subject ([LUM-LT-RF-RGBW-01](https://shop.gsmet.be/Article/ArticleDetails/a050e3fa-6031-46fb-9c97-5524d6bc4817))
 The target device is a **LED controller** that operates with an RF remote. The goal is to capture the communication between the remote and the controller and decode it as much as possible.  
@@ -12,9 +12,16 @@ If the target operates on a higher or lower frequency, ensure the SDR can handle
 ### SDR software ([SDR#](https://airspy.com/download/))
 For software, I opted for **SDR# (SDRSharp)**
 
-## capturing
+## Capturing
 
+To capture the signals, I used **SDR#** and configured it to record in **RAW** mode to avoid performing an analog-to-digital conversion prematurely. Next, I set SDR# to record at **433.9 MHz** with the following parameters:  
 
+- **Filter Type**: Blackman-Harris 4  
+- **Bandwidth**: 15 MHz  
+- **Order**: 1.00  
+- **Gain**: 0 dB  
+
+I then used the built-in audio recording tool in **SDR#**, named **Audio: Simple Recorder**, to capture the signals. I recorded all button presses together in a single fragment while also capturing each action separately for easier analysis.
 
 ## Decoding 
 ###  Analog to digital 
@@ -53,25 +60,44 @@ This seems more promising. However, there may have been a few `00` pairs discard
 
 When using the first method for additional button presses, a pattern becomes clear. By correlating signal changes with the action performed, the following table summarizes the discovered relationships:
 
-|                                        |      | ID       | channel | CMD  | DATA     |
-| -------------------------------------- | ---- | -------- | ------- | ---- | -------- |
-| **Button 1 ON**                        | ABA  | ABBBBAAA | AAAB    | BBAA | AAAAAAAB |
-| **Button 1 OFF**                       | ABA  | ABBBBAAA | AAAA    | BBAA | AAAAAAAA |
-| **Button 2 ON**                        | ABA  | ABBBBAAA | AABA    | BABB | AAAAAAAB |
-| **Button 2 OFF**                       | ABA  | ABBBBAAA | AAAA    | BABB | AAAAAAAA |
-| **Button 3 ON**                        | ABA  | ABBBBAAA | ABAA    | BABA | AAAAAAAB |
-| **Button 3 OFF**                       | ABA  | ABBBBAAA | AAAA    | BABA | AAAAAAAA |
-| **Button 4 ON**                        | ABA  | ABBBBAAA | BAAA    | BAAB | AAAAAAAB |
-| **Button 4 OFF**                       | ABA  | ABBBBAAA | AAAA    | BAAB | AAAAAAAA |
-| **ALL Buttons (Pressing W)**           | ABA  | ABBBBAAA | BBBB    | ABAB | BBBBBBBB |
-| **ALL Buttons (Trying pressing RED)**  | ABA  | ABBBBAAA | BBBB    | AAAA | ABBBBBAB |
-| **ALL Buttons (Trying pressing BLUE)** | ABA  | ABBBBAAA | BBBB    | AAAA | ABABABBB |
+|                                        | START FLAG | ID       | CHANNEL | CMD  | DATA     |
+| -------------------------------------- | ---------- | -------- | ------- | ---- | -------- |
+| **Button 1 ON**                        | ABA        | ABBBBAAA | AAAB    | BBAA | AAAAAAAB |
+| **Button 1 OFF**                       | ABA        | ABBBBAAA | AAAA    | BBAA | AAAAAAAA |
+| **Button 2 ON**                        | ABA        | ABBBBAAA | AABA    | BABB | AAAAAAAB |
+| **Button 2 OFF**                       | ABA        | ABBBBAAA | AAAA    | BABB | AAAAAAAA |
+| **Button 3 ON**                        | ABA        | ABBBBAAA | ABAA    | BABA | AAAAAAAB |
+| **Button 3 OFF**                       | ABA        | ABBBBAAA | AAAA    | BABA | AAAAAAAA |
+| **Button 4 ON**                        | ABA        | ABBBBAAA | BAAA    | BAAB | AAAAAAAB |
+| **Button 4 OFF**                       | ABA        | ABBBBAAA | AAAA    | BAAB | AAAAAAAA |
+| **ALL Buttons (Pressing W)**           | ABA        | ABBBBAAA | BBBB    | ABAB | BBBBBBBB |
+| **ALL Buttons (Trying pressing RED)**  | ABA        | ABBBBAAA | BBBB    | AAAA | ABBBBBAB |
+| **ALL Buttons (Trying pressing BLUE)** | ABA        | ABBBBAAA | BBBB    | AAAA | ABABABBB |
 
 > Note: When holding the button, the signal repeats, but instead of ABA, it starts with AABA. This appears to act as a flag to indicate that the signal has already been received, preventing repeated activation.
 
-## Result 
+## Result
 
-### Analog to digital
-Amplitude shift keying (ASK)
-### Digitial to binary
-1B4B
+As seen above, this decoding process has been relatively successful. However, there are still some small details we may never fully understand. For example:
+
+- **What `A` and `B` Represent**:  
+  My assumption is that `A = 0` and `B = 1`, as it makes sense to assign the active-high channels to `1` in a program. However, without access to the firmware, this cannot be definitively confirmed.
+
+- **Data Interpretation**:  
+  While the data for the ON and OFF states seems clear, the binary data for colors doesn't make immediate sense. This inconsistency is annoying and suggests further investigation is required.
+
+### Key Findings
+
+Despite these uncertainties, we can conclude the following about the device's operation:
+
+```mermaid
+graph LR
+Action["Button is pressed"]
+genMSG["Generating the base message"]
+DIGITAL_TO_DIGITAL["Block encoding using 1B4B with symbols 1110 and 1000"]
+DIGITAL_TO_ANALOG["Amplitude Shift Keying at a base frequency of 433.9 MHz"]
+
+Action --> genMSG
+genMSG --> DIGITAL_TO_DIGITAL
+DIGITAL_TO_DIGITAL --> DIGITAL_TO_ANALOG
+```
